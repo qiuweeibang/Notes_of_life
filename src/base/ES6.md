@@ -266,6 +266,166 @@ console.log(arr.flatMap(x => x.split(" ")));
 
 
 
+30、Object.fromEntries  Object.fromEntries`把`键值对数组转为对象
+
+```js
+const arr = [
+  ['name', '林三心'],
+  ['age', 22],
+  ['gender', '男']
+]
+
+console.log(Object.fromEntries(arr)) // { name: '林三心', age: 22, gender: '男' }
+
+//Map转为对象
+const map = new Map()
+map.set('name', '林三心')
+map.set('age', 22)
+map.set('gender', '男')
+
+console.log(map) // Map(3) { 'name' => '林三心', 'age' => 22, 'gender' => '男' }
+
+const obj = Object.fromEntries(map)
+console.log(obj) // { name: '林三心', age: 22, gender: '男' }
+```
+
+
+
+31、String.trimStart && String.trimEnd trimStart和trimEnd用来单独去除字符串的首和尾的空格
+
+​		String.trim方法，可以清除字符串首尾的空格
+
+
+
+## ES11
+
+32、Promise.allSettled （数组版all）
+
+- 接收一个Promise数组，数组中如有非Promise项，则此项当做成功
+- **把每一个Promise的结果，集合成数组，返回**
+
+
+
+33、 ?. 可选链  和 ??   空位合并运算符
+
+?. 可选链
+
+```js
+//1.变量
+    const list = null
+    // do something
+    if (list && list.length) {
+      // do something
+    }
+
+    // 使用可选链
+    const list = null
+    // do something
+    if (list?.length) {
+      // do something
+    }
+
+//2、对象
+    const obj = {
+      cat: {
+        name: '哈哈'
+      }
+    }
+    const dog = obj && obj.dog && obj.dog.name // undefined
+
+    // 可选链
+    const obj = {
+      cat: {
+        name: '哈哈'
+      }
+    }
+    const dog = obj?.dog?.name // undefined
+
+// 3.函数
+    const fn = null
+    // do something
+    const res = fn && fn()
+
+    // 可选链
+    const fn = null
+    // do something
+    const res = fn?.()
+
+//4.数组
+    const arr = null
+    // do something
+    const item = arr && arr[1]
+
+    // 可选链
+    const arr = null
+    // do something
+    const item = arr?.[1]
+```
+
+
+
+??   空位合并运算符 **只有undefined和null才算假值**
+
+```js
+使用||运算符，只要左边是假值，就会返回右边的数据
+
+const a = 0 || '林三心' // 林三心
+const b = '' || '林三心' // 林三心
+const c = false || '林三心' // 林三心
+const d = undefined || '林三心' // 林三心
+const e = null || '林三心' // 林三心
+
+而??和||最大的区别是，在??这，只有undefined和null才算假值
+
+const a = 0 ?? '林三心' // 0
+const b = '' ?? '林三心' // ''
+const c = false ?? '林三心' // false
+const d = undefined ?? '林三心' // 林三心
+const e = null ?? '林三心' // 林三心
+```
+
+
+
+### ES12
+
+34、Promise.any
+
+- 接收一个Promise数组，数组中如有非Promise项，则此项当做成功
+- **如果有一个Promise成功，则返回这个成功结果**
+- 如果所有Promise都失败，则报错
+
+
+
+35、数字分隔符  数字分隔符可以让你在定义长数字时，更加地一目了然
+
+```
+const num = 1000000000
+
+// 使用数字分隔符
+const num = 1_000_000_000
+```
+
+
+
+36、||= 和 &&=
+
+```
+或等于(||=)   a ||= b 等同于 a || (a = b);
+
+且等于(&&=)   a &&= b 等同于 a && (a = b);
+```
+
+
+
+
+
+37、对象计算属性(动态存储属性)
+
+```js
+this.setData({
+  [`${type}Name`]: name
+})
+```
 
 
 
@@ -279,38 +439,11 @@ console.log(arr.flatMap(x => x.split(" ")));
 
 
 
+==================================分割线===============================================
+
+有待深究知识
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1.flat
 
 2.Map和Set
 
@@ -340,6 +473,8 @@ const totalObj = nameArr.reduce((pre, next) => {
 console.log(totalObj) // { '林三心': 3, sunshine_lin: 1, '科比': 1 }
 
 ```
+
+4.Symbol
 
 
 
