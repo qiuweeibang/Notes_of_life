@@ -24,5 +24,3 @@ function liu(fn,wait){
         }
     }
 }
-let now =new Date()
-console.log(now.getFullYear()+'/'+(now.getMonth()+1))

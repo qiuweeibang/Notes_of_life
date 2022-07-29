@@ -34,3 +34,7 @@ Function.prototype.myBind= function(that,arg){
         return res
     }
 }
+
+/* 数字可以使用下划线 */
+let n = 1_1_1
+console.warn(n)

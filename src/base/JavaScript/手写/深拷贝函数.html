@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 实现深度拷贝  数组与对象 */
+        function deepClone(obj){
+            /* 1.如果不是对象或许数组,则返回 */
+            if(!obj instanceof Array || !obj instanceof Object){
+                  throw new Error('请传入对象或数组')      
+            };
+            /* 2.新对象 区分是对象还是数组 */
+            let temp =  Array.isArray(obj) ? [] : {};
+
+            for(let key in obj){
+                console.warn(key,'temp:',temp)
+            /* 3.区分元素是否是对象，如果是进行 递归 */
+                temp[key] = typeof obj[key] ==="object" ? deepClone(obj[key]) : obj[key]
+            }
+            return temp
+        }
+
+    //     let obj =[
+    //         {abc:{
+    //             bb:[1,2,3,4]
+    //              }
+    //         },
+    //         {
+    //             d:[1,2,3,4],
+    //             c:{jj:1}
+    //         }
+    //     ]
+    //  console.log(obj,1)
+    //  let arr = deepClone(obj)
+    //  console.log(arr,2)
+    </script>
+</body>
+</html>
